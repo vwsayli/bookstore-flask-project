@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block title %}Book List {% endblock %}
+{% block body %}
+
+<div class="container my-5">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Sr No.</th>
+          <th scope="col">Book Id</th>
+          <th scope="col">Book Name</th>
+          <th scope="col">Book Author</th>
+          <th scope="col">Number of copies</th>
+          <th scope="col">Book Price</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for bk in booklist  %}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{bk.bookId}}</td>
+          <td>{{bk.bookName}}</td>
+          <td>{{bk.bookAuthor}}</td>
+          <td>{{bk.bookCopy}}</td>
+          <td> &#8377; {{bk.bookPrice}}</td>
+          <td>
+            <a onclick="return confirm('Do you want to delete')" href="deletebook/{{bk.bookId}}" class="btn btn-primary">Delete</a>
+            <a onclick="return confirm('Do you want to edit')" href="editbook/{{bk.bookId}}" class="btn btn-secondary">Edit</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

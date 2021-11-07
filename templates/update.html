@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block title %}Update Book {% endblock %}
+
+{% block body %}
+
+<div class="container my-5">
+    <h2>Update Book details</h2>
+    <h5>{{message}}</h5>  
+    <form action="/updatebook" method="POST">
+        <div class="mb-3">
+          <label for="bookId" class="form-label">Book Id</label>
+          <input type="number" class="form-control" id="bookId" name="bookId" value="{{book.bookId}}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="bookName" class="form-label">Book Name</label>
+            <input type="text" class="form-control" id="bookName" name="bookName" value="{{book.bookName}}">
+        </div>
+        <div class="mb-3">
+            <label for="bookAuthor" class="form-label">Book Author</label>
+            <input type="text" class="form-control" id="bookAuthor" name="bookAuthor" value="{{book.bookAuthor}}">
+        </div>
+        <div class="mb-3">
+            <label for="bookCopy" class="form-label">Number of copies</label>
+            <input type="number" class="form-control" id="bookCopy" name="bookCopy" value="{{book.bookCopy}}">
+        </div>
+        <div class="mb-3">
+            <label for="bookPrice" class="form-label">Book Price</label>
+            <input type="number" class="form-control" id="bookPrice" name="bookPrice" value="{{book.bookPrice}}">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+  </div>
+  {% endblock %}

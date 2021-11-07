@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block body %}
+      <div class="container my-5">
+        <h2>New Book </h2>
+        <h5>{{message}}</h5>  
+        <form action="savebook" method="POST">
+            <div class="mb-3">
+              <label for="bookId" class="form-label">Book Id</label>
+              <input type="number" class="form-control" id="bookId" name="bookId">
+            </div>
+            <div class="mb-3">
+                <label for="bookName" class="form-label">Book Name</label>
+                <input type="text" class="form-control" id="bookName" name="bookName">
+            </div>
+            <div class="mb-3">
+                <label for="bookAuthor" class="form-label">Book Author</label>
+                <input type="text" class="form-control" id="bookAuthor" name="bookAuthor">
+            </div>
+            <div class="mb-3">
+                <label for="bookCopy" class="form-label">Number of copies</label>
+                <input type="number" class="form-control" id="bookCopy" name="bookCopy">
+            </div>
+            <div class="mb-3">
+                <label for="bookPrice" class="form-label">Book Price</label>
+                <input type="number" class="form-control" id="bookPrice" name="bookPrice">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Save</button>
+          </form>
+      </div>
+
+      <div class="container my-5">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Sr No.</th>
+              <th scope="col">Book Id</th>
+              <th scope="col">Book Name</th>
+              <th scope="col">Book Author</th>
+              <th scope="col">Number of copies</th>
+              <th scope="col">Book Price</th>
+              <th scope="col" colspan="2">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for bk in booklist  %}
+            <tr>
+              <th scope="row">{{loop.index}}</th>
+              <td>{{bk.bookId}}</td>
+              <td>{{bk.bookName}}</td>
+              <td>{{bk.bookAuthor}}</td>
+              <td>{{bk.bookCopy}}</td>
+              <td> &#8377; {{bk.bookPrice}}</td>
+              <td>
+                <a onclick="return confirm('Do you want to delete')" href="deletebook/{{bk.bookId}}" class="btn btn-primary">Delete</a>
+                <a onclick="return confirm('Do you want to edit')" href="editbook/{{bk.bookId}}" class="btn btn-secondary">Edit</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+ 
+{% endblock %}
